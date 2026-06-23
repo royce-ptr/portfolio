@@ -346,6 +346,13 @@ a { color: inherit; text-decoration: none; }
   margin: -1.5rem 0 2.5rem;
   font-size: 1.05rem;
 }
+.build__sub {
+  margin: 3rem 0 0.4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 1.35rem;
+}
+.build__sub + .build__intro { margin-top: 0; }
 .specs {
   display: grid;
   grid-template-columns: 1.25fr 1fr;
