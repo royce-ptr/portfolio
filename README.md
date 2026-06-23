@@ -27,9 +27,10 @@ Everything you need to change lives in `index.html`. Search for these and
 replace with your real info:
 
 - **Name & tagline** — the hero section near the top.
-- **About** — your real story (there's a placeholder note in italics to delete).
-- **Projects** — four `<article class="card">` blocks. Update the title,
-  description, tags, and the two link `href="#"` (live demo + source).
+- **About** — your real story in the `.about__text` paragraphs and the
+  contact details in `.about__meta`.
+- **Expertise** — four `<article class="card">` blocks. Update the title,
+  description, and tags to match the skills you want to highlight.
 - **Experience** — the `.tl-item` blocks (jobs + education). Edit titles,
   companies, dates, and descriptions.
 - **Contact links** — update the GitHub / LinkedIn / Twitter URLs and the
