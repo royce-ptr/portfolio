@@ -16,7 +16,7 @@ portfolio/
     └── Royce_Trieu_Resume_Data_Entry.docx
 ```
 
-**Already filled in for you:** your name, contact info (christr0812@gmail.com,
+**Already filled in for you:** your name, contact info (royce.ptrieu@gmail.com,
 (714) 677-7616, Alhambra CA), your LinkedIn, education (Cal Poly Pomona),
 your full work history (LA County, Apple, Target, Tick Tick Times), skills,
 and downloadable résumés in both PDF and Word.
