@@ -63,6 +63,46 @@ document.querySelectorAll(".card").forEach((card) => {
   });
 });
 
+// ---- Tabbed sections ----
+// Each <section class="tab-panel"> is shown one at a time. Any in-page
+// link (#about, #build, ...) or the logo swaps the active panel instead
+// of scrolling, giving a tabbed single-page experience.
+const panels = Array.from(document.querySelectorAll(".tab-panel"));
+const tabLinks = Array.from(document.querySelectorAll('a[href^="#"]'));
+
+function showTab(id) {
+  const panel = document.getElementById(id);
+  if (!panel || !panel.classList.contains("tab-panel")) return false;
+  panels.forEach((p) => p.classList.toggle("is-active", p === panel));
+  // Highlight the matching nav link
+  document.querySelectorAll(".nav__links a").forEach((a) => {
+    const on = a.getAttribute("href") === "#" + id;
+    a.classList.toggle("active", on);
+    if (on) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
+  });
+  // Content inside a hidden panel never triggered the reveal observer,
+  // so reveal it now that the panel is visible.
+  panel.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+  window.scrollTo({ top: 0, behavior: "auto" });
+  return true;
+}
+
+tabLinks.forEach((a) => {
+  a.addEventListener("click", (e) => {
+    const id = a.getAttribute("href").slice(1);
+    const target = document.getElementById(id);
+    if (target && target.classList.contains("tab-panel")) {
+      e.preventDefault();
+      history.replaceState(null, "", "#" + id);
+      showTab(id);
+    }
+  });
+});
+
+// Open the tab named in the URL hash on load, otherwise the hero.
+if (!showTab(location.hash.slice(1))) showTab("hero");
+
 // Footer visitor count from GoatCounter (only shows if the count loads)
 fetch("https://royce-ptr.goatcounter.com/counter/TOTAL.json")
   .then((r) => (r.ok ? r.json() : Promise.reject()))
