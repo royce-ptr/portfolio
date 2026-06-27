@@ -62,3 +62,16 @@ document.querySelectorAll(".card").forEach((card) => {
     card.style.setProperty("--my", `${e.clientY - r.top}px`);
   });
 });
+
+// Footer visitor count from GoatCounter (only shows if the count loads)
+fetch("https://royce-ptr.goatcounter.com/counter/TOTAL.json")
+  .then((r) => (r.ok ? r.json() : Promise.reject()))
+  .then((d) => {
+    const count = d.count_unique || d.count;
+    if (!count) return;
+    document.getElementById("visit-count").textContent = count;
+    document.getElementById("visits").hidden = false;
+  })
+  .catch(() => {
+    /* counter not enabled yet or offline — leave the badge hidden */
+  });
